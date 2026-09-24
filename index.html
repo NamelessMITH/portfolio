@@ -10,7 +10,7 @@
 <body>
 
     <div class="particulas"></div>
-    
+
     <nav class="navegacao">
         <ul class="menu">
             <li>
@@ -114,73 +114,7 @@ Busco uma oportunidade que me permita crescer profissionalmente, contribuir com 
 
             window.open(url, '_blank')
         }
-
-    const canvas = document.getElementById("matrix");
-    const ctx = canvas.getContext("2d");
-
-        let largura;
-        let altura;
-
-    const caracteres = "01<>[]{}/();=+*#@$%&";
-    const tamanhoFonte = 16;
-
-    let colunas;
-    let gotas = [];
-
-    function ajustarCanvas() {
-        largura = canvas.width = window.innerWidth;
-        altura = canvas.height = window.innerHeight;
-
-        colunas = Math.floor(largura / tamanhoFonte);
-
-        gotas = [];
-
-        for (let i = 0; i < colunas; i++) {
-            gotas[i] = Math.random() * -100;
-            }
-    }
-
-function desenharMatrix() {
-
-    ctx.fillStyle = "rgba(5, 7, 13, 0.08)";
-    ctx.fillRect(0, 0, largura, altura);
-
-    ctx.font = `${tamanhoFonte}px monospace`;
-
-    for (let i = 0; i < gotas.length; i++) {
-
-        const caractere =
-            caracteres[Math.floor(Math.random() * caracteres.length)];
-
-        const x = i * tamanhoFonte;
-        const y = gotas[i] * tamanhoFonte;
-        const escolha = Math.random();
-
-        if (escolha < 0.5) {
-            ctx.fillStyle = "#6366F1";
-        } else if (escolha < 0.8) {
-            ctx.fillStyle = "#8B5CF6";
-        } else {
-            ctx.fillStyle = "#22D3EE";
-        }
-        ctx.shadowBlur = 8;
-        ctx.shadowColor = ctx.fillStyle;
-
-        ctx.fillText(caractere, x, y);
-
-        ctx.shadowBlur = 0;
-        gotas[i]++;
-        if (y > altura && Math.random() > 0.975) {
-            gotas[i] = Math.random() * -20;
-        }
-    }
-
-    requestAnimationFrame(desenharMatrix);
-}
-
-window.addEventListener("resize", ajustarCanvas);
-ajustarCanvas();
-desenharMatrix();
+        
     </script>
 
 </body>
